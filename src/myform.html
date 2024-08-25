@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="FormController">
+    <form ng-submit="submitForm()" ng-init="resetForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" ng-model="formData.name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" ng-model="formData.email" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" ng-model="formData.dob" required><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" ng-model="formData.gender" value="male"> Male<br>
+        <input type="radio" ng-model="formData.gender" value="female"> Female<br>
+        <input type="radio" ng-model="formData.gender" value="other"> Other<br><br>
+
+        <label for="interest">Interests:</label><br>
+        <input type="checkbox" ng-model="formData.interests.sports"> Sports<br>
+        <input type="checkbox" ng-model="formData.interests.music"> Music<br>
+        <input type="checkbox" ng-model="formData.interests.movies"> Movies<br>
+        <input type="checkbox" ng-model="formData.interests.travel"> Travel<br><br>
+
+        <button type="submit">Submit</button>
+        <button type="button" ng-click="resetForm()">Reset</button>
+    </form>
+</div>
+
+<script>
+    angular.module('myApp', [])
+        .controller('FormController', function($scope) {
+            $scope.formData = {};
+
+            $scope.submitForm = function() {
+                // Here you can handle form submission, for demonstration purpose, let's just log the form data
+                console.log($scope.formData);
+            };
+
+            $scope.resetForm = function() {
+                // Reset form data
+                $scope.formData = {};
+            };
+        });
+</script>
+
+</body>
+</html>
