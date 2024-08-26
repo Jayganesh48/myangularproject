@@ -1,4 +1,4 @@
-import { Component, EventEmitter, NgModule, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Todo } from '../../Todo';
@@ -13,18 +13,25 @@ import { Todo } from '../../Todo';
 })
 export class AddTodoComponent {
 
-  title: string;
-  desc: string;
+  title: string | undefined;
+  desc: string | undefined;
 
-  constructor() {
-    this.title = "";
-    this.desc = "";
-
-  }
   @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
+  
+  constructor() {
+   
+  }
+  ngOnInit(): void {
+  }
+ 
 
 
   onSubmit() {
+
+    console.log('Form submitted');
+    console.log('Title:', this.title);
+    console.log('Description:', this.desc);
+
     const todo = {
       sno: 8,
       title: this.title,
